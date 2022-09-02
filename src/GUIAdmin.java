@@ -12,7 +12,7 @@ public class GUIAdmin extends JFrame{
 	private JTextField tfDocumento;
 	private JTextField tfNombre2;
 	private JTextField tfApellido2;
-	private JTextField tfFechaNac;
+	private JTextField tfFechaNac; 
 	private JTextField tfEmail;
 	private JTextField tfClave;
 	private JTextField tfIdRol;
