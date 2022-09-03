@@ -12,6 +12,32 @@ public class DAORol {
 	INSERT_ROL = "INSERT INTO ROL (ID_ROL,DESCRIPCION,NOMBRE) values (?,?,?)";
 	private static final String
 	UPDATE_ROL = "UPDATE ROL SET NOMBRE = ?, DESCRIPCION = ? WHERE ID_= ?";
+	private static final String
+    SELECCIONAR_ROL_BY_ID = "SELECT * FROM ROL WHERE ID_ROL=?";
+public static Rol buscarRolById(int id){
+
+        Rol f = null;
+        try {
+            PreparedStatement statement = DataBaseManager.getConnection().prepareStatement(SELECCIONAR_ROL_BY_ID);
+
+            statement.setInt(1, id);
+            ResultSet resultado = statement.executeQuery();
+            if(resultado.next()) {
+                f = new Rol(
+                        resultado.getInt("ID_ROL"),
+                        resultado.getString("NOMBRE"), 
+                        resultado.getString("DESCRIPCION"),
+                        null
+                        );
+            }
+            statement.executeUpdate();
+
+            return f;
+        }catch(SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 	public static boolean insertROL(Rol p){
 		try {
 			PreparedStatement statement = DataBaseManager.getConnection().prepareStatement(INSERT_ROL);
