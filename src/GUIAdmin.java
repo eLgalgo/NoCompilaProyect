@@ -255,6 +255,17 @@ public class GUIAdmin extends JFrame{
         panel5.add(btnModificar);
         
         JButton btnCrear = new JButton("Crear");
+        btnCrear.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Rol r = new Rol(Integer.parseInt(tfId.getText()) , tfNombreRol.getText(), tfDesc.getText(), null);
+        		if(DAORol.insertROL(r))
+        		{
+					JOptionPane.showInternalMessageDialog(null, "Rol agregado!");
+				}else {
+					JOptionPane.showMessageDialog(null, "Error al intentar crear un rol");
+				}
+        	}
+        });
         btnCrear.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btnCrear.setBounds(226, 87, 132, 34);
         panel5.add(btnCrear);
