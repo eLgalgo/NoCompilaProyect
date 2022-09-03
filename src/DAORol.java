@@ -10,6 +10,8 @@ public class DAORol {
 	LISTAR = "SELECT * FROM ROL";
 	private static final String
 	INSERT_ROL = "INSERT INTO ROL (ID_ROL,DESCRIPCION,NOMBRE) values (?,?,?)";
+	private static final String
+	UPDATE_ROL = "UPDATE ROL SET NOMBRE = ?, DESCRIPCION = ? WHERE ID_= ?";
 	public static boolean insertROL(Rol p){
 		try {
 			PreparedStatement statement = DataBaseManager.getConnection().prepareStatement(INSERT_ROL);
@@ -49,6 +51,21 @@ public class DAORol {
 		}catch(SQLException e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+	public static boolean updateROL(Rol f){
+		try {
+			PreparedStatement statement = DataBaseManager.getConnection().prepareStatement(UPDATE_ROL);
+			statement.setString(1, f.getNombre());
+			statement.setString(2, f.getDesc());
+			statement.setInt(3, f.getId());
+	
+			statement.executeUpdate();
+			
+			return true;
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 	}

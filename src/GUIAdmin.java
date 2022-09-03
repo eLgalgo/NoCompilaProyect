@@ -250,6 +250,11 @@ public class GUIAdmin extends JFrame{
         panel5.add(lblNewLabel_1_2);
         
         JButton btnModificar = new JButton("Modificar");
+        btnModificar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        	}
+        });
         btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 15));
         btnModificar.setBounds(26, 87, 132, 34);
         panel5.add(btnModificar);
