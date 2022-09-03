@@ -59,7 +59,7 @@ public class DAOFuncionalidad {
 			statement.setInt(1, f.getId());
 			
 			statement.executeUpdate();
-			
+			System.out.println("problem here");
 			return true;
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -87,5 +87,6 @@ public class DAOFuncionalidad {
 			e.printStackTrace();
 			return null;
 		}
+		
 	}
 }
