@@ -18,7 +18,7 @@ public class GUIAdmin extends JFrame{
 	private JTextField tfIdRol;
 	private JTextField tfId;
 	private JTextField tfNombreRol;
-	private JTextField tfDesc;
+	private JTextField tfDescRol;
 	private JTextField tfId2;
 	private JTextField tfIdFunc;
 	private JTextField tfNombreFunc;
@@ -229,10 +229,10 @@ public class GUIAdmin extends JFrame{
         tfNombreRol.setBounds(244, 29, 86, 28);
         panel5.add(tfNombreRol);
         
-        tfDesc = new JTextField();
-        tfDesc.setColumns(10);
-        tfDesc.setBounds(419, 29, 130, 28);
-        panel5.add(tfDesc);
+        tfDescRol = new JTextField();
+        tfDescRol.setColumns(10);
+        tfDescRol.setBounds(419, 29, 130, 28);
+        panel5.add(tfDescRol);
         
         JLabel lblNewLabel_1 = new JLabel("Nombre");
         lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -249,23 +249,29 @@ public class GUIAdmin extends JFrame{
         lblNewLabel_1_2.setBounds(351, 36, 59, 15);
         panel5.add(lblNewLabel_1_2);
         
-        JButton btnModificar = new JButton("Modificar");
-        btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        btnModificar.setBounds(26, 87, 132, 34);
-        panel5.add(btnModificar);
+        JButton btnModificarRol = new JButton("Modificar");
+        btnModificarRol.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        btnModificarRol.setBounds(26, 87, 132, 34);
+        panel5.add(btnModificarRol);
         
-        JButton btnCrear = new JButton("Crear");
-        btnCrear.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        btnCrear.setBounds(226, 87, 132, 34);
-        panel5.add(btnCrear);
+        JButton btnCrearRol = new JButton("Crear");
+        btnCrearRol.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        btnCrearRol.setBounds(226, 87, 132, 34);
+        panel5.add(btnCrearRol);
         
-        JButton btnBuscarPorId = new JButton("Buscar por ID");
-        btnBuscarPorId.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        btnBuscarPorId.setBounds(428, 87, 132, 34);
-        panel5.add(btnBuscarPorId);
+        JButton btnBuscarPorIdRol = new JButton("Buscar por ID");
+        btnBuscarPorIdRol.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        btnBuscarPorIdRol.setBounds(428, 87, 132, 34);
+        panel5.add(btnBuscarPorIdRol);
         
         JComboBox cbFuncionalidades = new JComboBox();
         cbFuncionalidades.setBounds(217, 163, 124, 28);
+        
+        LinkedList<Funcionalidad> listaFunc = DAOFuncionalidad.selectAll();
+        
+        for(Funcionalidad f :listaFunc) {
+        	cbFuncionalidades.addItem(f.getNombre());
+        }
         panel5.add(cbFuncionalidades);
         
         JButton btnAgregarFunc = new JButton("Agregar Func");
@@ -318,6 +324,51 @@ public class GUIAdmin extends JFrame{
 				}else {
 					JOptionPane.showMessageDialog(null, "Error al intentar crear funcionalidad");
 				}
+        	}
+        });
+        	//Roles
+        btnAgregarFunc.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		int id = Integer.parseInt(tfId2.getText());
+        		
+        		if(DAORolFunc.agregarFuncARol(id,cbFuncionalidades.getSelectedItem().toString())) {
+        			JOptionPane.showMessageDialog(null, "Agregada con exito");
+        		}else {
+        			JOptionPane.showMessageDialog(null, "Agregada con desexito");
+        		}
+        		
+        	}
+        });
+        btnCrearRol.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Rol f = new Rol(
+        				Integer.parseInt(tfId.getText()),
+        				tfNombreRol.getText(),
+        				tfDescRol.getText(),
+        				null);
+        		if(DAORol.insertRol(f)) {
+        			JOptionPane.showMessageDialog(null, "Actualizado con exito");
+        		}else {
+        			JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
+        		}
+        	}
+        });
+        btnModificarRol.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		if(DAORol.updateRol(tfNombreRol.getText(), tfDescRol.getText(),Integer.parseInt(tfId.getText()))) {
+        			JOptionPane.showMessageDialog(null, "Actualizado con exito");
+        		}else {
+        			JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
+        		}
+        	}
+        });
+        btnBuscarPorIdRol.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		int idABuscar = Integer.parseInt(tfId.getText());
+        		Rol r = DAORol.buscarRolById(idABuscar);
+        		tfId.setText(String.valueOf(r.getId()));
+        		tfDescRol.setText(r.getDesc());
+        		tfNombreRol.setText(r.getNombre());
         	}
         });
         btnCrearPersona.addActionListener(new ActionListener() {
