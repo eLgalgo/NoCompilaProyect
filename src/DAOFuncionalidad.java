@@ -11,9 +11,10 @@ public class DAOFuncionalidad {
 	private static final String
 	SELECCIONAR_FUNCIONALIDAD_BY_ID = "SELECT * FROM FUNCIONALIDAD WHERE ID_FUNC=?";
 	private static final String
-	UPDATE_FUNCIONALIDAD = "UPDATE FUNCIONALIDAD SET NOMBRE = ?, DESCRIPCION = ? WHERE ID_FUNC= ?";
+	SELECCIONAR_FUNCIONALIDAD_BY_NOMBRE = "SELECT * FROM FUNCIONALIDAD WHERE NOMBRE=?";
 	private static final String
-    SELECCIONAR_FUNCIONALIDAD_BY_NOMBRE = "SELECT * FROM FUNCIONALIDAD WHERE NOMBRE=?";
+	UPDATE_FUNCIONALIDAD = "UPDATE FUNCIONALIDAD SET NOMBRE = ?, DESCRIPCION = ? WHERE ID_FUNC= ?";
+
 	public static Funcionalidad buscarFuncByNombre(String nombre){
 
         Funcionalidad f = null;
@@ -75,6 +76,7 @@ public class DAOFuncionalidad {
 			return null;
 		}
 	}
+
 	public static boolean insertFunc(Funcionalidad f){
 		try {
 			PreparedStatement statement = DataBaseManager.getConnection().prepareStatement(INSERT_FUNCIONALIDAD);
@@ -83,7 +85,6 @@ public class DAOFuncionalidad {
 			statement.setInt(1, f.getId());
 			
 			statement.executeUpdate();
-			System.out.println("problem here");
 			return true;
 		}catch(SQLException e) {
 			e.printStackTrace();
