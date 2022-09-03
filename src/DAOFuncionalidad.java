@@ -7,6 +7,8 @@ public class DAOFuncionalidad {
 	private static final String
 	LISTAR = "SELECT * FROM FUNCIONALIDAD";
 	private static final String
+	DELETE_FUNC = "DELETE FROM FUNCIONALIDAD WHERE ID_FUNC=?";
+	private static final String
 	INSERT_FUNCIONALIDAD = "INSERT INTO FUNCIONALIDAD (ID_FUNC, NOMBRE, DESCRIPCION) values (?,?,?)";
 	private static final String
 	SELECCIONAR_FUNCIONALIDAD_BY_ID = "SELECT * FROM FUNCIONALIDAD WHERE ID_FUNC=?";
@@ -15,6 +17,20 @@ public class DAOFuncionalidad {
 	private static final String
 	UPDATE_FUNCIONALIDAD = "UPDATE FUNCIONALIDAD SET NOMBRE = ?, DESCRIPCION = ? WHERE ID_FUNC= ?";
 
+	public static boolean deleteFunc(int id){
+		try {
+			PreparedStatement statement = DataBaseManager.getConnection().prepareStatement(DELETE_FUNC);
+			statement.setInt(1, id);
+			
+			int retorno = statement.executeUpdate();
+			return retorno>0;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}	
+		
+	}
 	public static Funcionalidad buscarFuncByNombre(String nombre){
 
         Funcionalidad f = null;

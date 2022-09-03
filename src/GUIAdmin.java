@@ -216,6 +216,11 @@ public class GUIAdmin extends JFrame{
         btnBuscarPorId_1.setBounds(432, 83, 132, 34);
         panel6.add(btnBuscarPorId_1);
         
+        JButton btnEliminarFunc = new JButton("Eliminar");
+        btnEliminarFunc.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        btnEliminarFunc.setBounds(30, 143, 132, 34);
+        panel6.add(btnEliminarFunc);
+        
         
         panel5.setLayout(null);
         
@@ -289,6 +294,11 @@ public class GUIAdmin extends JFrame{
         lblNewLabel_1_1_1.setBounds(26, 168, 28, 15);
         panel5.add(lblNewLabel_1_1_1);
         
+        JButton btnRecargar = new JButton("Recargar");
+        btnRecargar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        btnRecargar.setBounds(227, 202, 103, 28);
+        panel5.add(btnRecargar);
+        
         getContentPane().add(pestañas);
         this.setLocationRelativeTo(null);
         //Botones
@@ -327,6 +337,25 @@ public class GUIAdmin extends JFrame{
         	}
         });
         	//Roles
+        btnEliminarFunc.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		int idAEliminar = Integer.parseInt(tfIdFunc.getText());
+        		if(DAOFuncionalidad.deleteFunc(idAEliminar)) {
+        			JOptionPane.showMessageDialog(null, "Eliminado con exito");
+        		}else {
+        			JOptionPane.showMessageDialog(null, "Eliminado con desexito");
+        		}
+        	}
+        });
+        btnRecargar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		cbFuncionalidades.removeAllItems();
+        		LinkedList<Funcionalidad> listaFunc = DAOFuncionalidad.selectAll();
+        		for(Funcionalidad f :listaFunc) {
+                	cbFuncionalidades.addItem(f.getNombre());
+                }
+        	}
+        });
         btnAgregarFunc.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		int id = Integer.parseInt(tfId2.getText());

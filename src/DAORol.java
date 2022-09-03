@@ -5,15 +5,31 @@ import java.util.LinkedList;
 
 public class DAORol {
 	private static final String
+	DELETE_ROL = "DELETE FROM ROL WHERE ID_ROL=?";
+	private static final String
 	LISTAR = "SELECT * FROM ROL";
 	private static final String
 	INSERT_ROL = "INSERT INTO ROL (ID_ROL, NOMBRE, DESCRIPCION) values (?,?,?)";
 	private static final String
-
 	UPDATE_ROL = "UPDATE ROL SET NOMBRE = ?, DESCRIPCION = ? WHERE ID_= ?";
 	private static final String
     SELECCIONAR_ROL_BY_ID = "SELECT * FROM ROL WHERE ID_ROL=?";
-public static Rol buscarRolById(int id){
+	
+	public static boolean deleteRol(int id){
+		try {
+			PreparedStatement statement = DataBaseManager.getConnection().prepareStatement(DELETE_ROL);
+			statement.setInt(1, id);
+			
+			int retorno = statement.executeUpdate();
+			return retorno>0;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}	
+		
+	}
+	public static Rol buscarRolById(int id){
 
         Rol f = null;
         try {

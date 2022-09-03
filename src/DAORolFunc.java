@@ -12,6 +12,7 @@ public class DAORolFunc {
 			PreparedStatement statement = DataBaseManager.getConnection().prepareStatement(INSERT_ROL_FUNC);
 			statement.setInt(1, idRol);
 			int idFunc = DAOFuncionalidad.buscarFuncByNombre(nombreFunc).getId();
+			System.out.println(idRol);
 			statement.setInt(2, idFunc);
 			
 			
