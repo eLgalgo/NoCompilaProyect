@@ -23,6 +23,16 @@ public class GUIAdmin extends JFrame{
 	private JTextField tfIdFunc;
 	private JTextField tfNombreFunc;
 	private JTextField tfDescFunc;
+	private JTextField tfEliminarPersona;
+	private JTextField tfModNombre;
+	private JTextField tfModApellido;
+	private JTextField tfModDocumento;
+	private JTextField tfModNombre2;
+	private JTextField tfModApellido2;
+	private JTextField tfModFechaNac;
+	private JTextField tfModEmail;
+	private JTextField tfModClave;
+	private JTextField tfModRol;
  
     public GUIAdmin(){
  
@@ -31,7 +41,7 @@ public class GUIAdmin extends JFrame{
         setBounds(100, 100, 654, 391);
         setResizable(false);
         setVisible(true);
-        setTitle("Ejemplo JTabbedPane");
+        setTitle("Administracion Personal");
  
         //Creamos el conjunto de pestañas
         JTabbedPane pestañas=new JTabbedPane();
@@ -141,27 +151,164 @@ public class GUIAdmin extends JFrame{
         //Realizamos lo mismo con el resto
         JPanel panel2=new JPanel();
         pestañas.addTab("Modificaciones", panel2);
- 
-        //Componentes del panel2
-        JLabel et_p2=new JLabel("Estas en el panel 2");
-        panel2.add(et_p2);
+        panel2.setLayout(null);
+        
+        tfModNombre = new JTextField();
+        tfModNombre.setColumns(10);
+        tfModNombre.setBounds(35, 40, 86, 28);
+        panel2.add(tfModNombre);
+        
+        tfModApellido = new JTextField();
+        tfModApellido.setColumns(10);
+        tfModApellido.setBounds(224, 40, 86, 28);
+        panel2.add(tfModApellido);
+        
+        tfModDocumento = new JTextField();
+        tfModDocumento.setColumns(10);
+        tfModDocumento.setBounds(413, 40, 86, 28);
+        panel2.add(tfModDocumento);
+        
+        tfModNombre2 = new JTextField();
+        tfModNombre2.setColumns(10);
+        tfModNombre2.setBounds(35, 118, 86, 28);
+        panel2.add(tfModNombre2);
+        
+        tfModApellido2 = new JTextField();
+        tfModApellido2.setColumns(10);
+        tfModApellido2.setBounds(224, 118, 86, 28);
+        panel2.add(tfModApellido2);
+        
+        tfModFechaNac = new JTextField();
+        tfModFechaNac.setColumns(10);
+        tfModFechaNac.setBounds(413, 122, 86, 28);
+        panel2.add(tfModFechaNac);
+        
+        tfModEmail = new JTextField();
+        tfModEmail.setColumns(10);
+        tfModEmail.setBounds(35, 196, 86, 28);
+        panel2.add(tfModEmail);
+        
+        tfModClave = new JTextField();
+        tfModClave.setColumns(10);
+        tfModClave.setBounds(224, 200, 86, 28);
+        panel2.add(tfModClave);
+        
+        tfModRol = new JTextField();
+        tfModRol.setColumns(10);
+        tfModRol.setBounds(413, 196, 86, 28);
+        panel2.add(tfModRol);
+        
+        JLabel lblNewLabel_2 = new JLabel("Nombre");
+        lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblNewLabel_2.setBounds(51, 24, 59, 15);
+        panel2.add(lblNewLabel_2);
+        
+        JLabel lblApellido_1 = new JLabel("Apellido");
+        lblApellido_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblApellido_1.setBounds(240, 24, 59, 15);
+        panel2.add(lblApellido_1);
+        
+        JLabel lblDocumento_1 = new JLabel("Documento");
+        lblDocumento_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblDocumento_1.setBounds(417, 24, 75, 15);
+        panel2.add(lblDocumento_1);
+        
+        JLabel lblNombre_1_5 = new JLabel("Nombre2");
+        lblNombre_1_5.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblNombre_1_5.setBounds(48, 101, 69, 15);
+        panel2.add(lblNombre_1_5);
+        
+        JLabel lblNombre_2 = new JLabel("Apellido2");
+        lblNombre_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblNombre_2.setBounds(234, 102, 69, 15);
+        panel2.add(lblNombre_2);
+        
+        JLabel lblNombre_1_1_1 = new JLabel("Email");
+        lblNombre_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblNombre_1_1_1.setBounds(44, 180, 69, 15);
+        panel2.add(lblNombre_1_1_1);
+        
+        JLabel lblNombre_1_2_1 = new JLabel("Clave");
+        lblNombre_1_2_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblNombre_1_2_1.setBounds(231, 182, 69, 15);
+        panel2.add(lblNombre_1_2_1);
+        
+        JLabel lblNombre_1_3_1 = new JLabel("ID Rol");
+        lblNombre_1_3_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblNombre_1_3_1.setBounds(423, 180, 69, 15);
+        panel2.add(lblNombre_1_3_1);
+        
+        JLabel lblNombre_1_4_1 = new JLabel("Fecha Nac");
+        lblNombre_1_4_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblNombre_1_4_1.setBounds(422, 104, 69, 15);
+        panel2.add(lblNombre_1_4_1);
+        
+        JButton btnActualizarDatos = new JButton("Actualizar Datos");
+        btnActualizarDatos.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        btnActualizarDatos.setBounds(51, 256, 157, 34);
+        panel2.add(btnActualizarDatos);
+        
+        JButton btnBuscarDocumento = new JButton("Buscar Documento");
+        btnBuscarDocumento.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        btnBuscarDocumento.setBounds(342, 256, 157, 34);
+        panel2.add(btnBuscarDocumento);
  
         JPanel panel3=new JPanel();
  
-        //Componentes del panel3
-        JLabel et_p3=new JLabel("Estas en el panel 3");
-        panel3.add(et_p3);
- 
         pestañas.addTab("Bajas", panel3);
+        panel3.setLayout(null);
+        
+        tfEliminarPersona = new JTextField();
+        tfEliminarPersona.setColumns(10);
+        tfEliminarPersona.setBounds(170, 124, 86, 28);
+        panel3.add(tfEliminarPersona);
+        
+        JLabel lblNewLabel_1_1_2_1 = new JLabel("Documento");
+        lblNewLabel_1_1_2_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblNewLabel_1_1_2_1.setBounds(74, 129, 86, 15);
+        panel3.add(lblNewLabel_1_1_2_1);
+        
+        JButton btnEliminarPersona = new JButton("Eliminar");
+        btnEliminarPersona.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        btnEliminarPersona.setBounds(276, 120, 132, 34);
+        panel3.add(btnEliminarPersona);
  
         JPanel panel4=new JPanel();
+        panel4.setLayout(null);
  
         //Componentes del panel4
         
         JTable et_p4= tabListarPersonas();
-        panel4.add(new JScrollPane(et_p4));
- 
+        JScrollPane scrollPane = new JScrollPane(et_p4);
+        scrollPane.setBounds(23, 11, 463, 96);
+        panel4.add(scrollPane);
+        
+        JTable et_p5= tabListarFuncionalidades();
+        JScrollPane scrollPane2 = new JScrollPane(et_p5);
+        scrollPane2.setBounds(23, 217, 463, 96);
+        panel4.add(scrollPane2);
+        
+        JTable et_p6= tabListarRoles();
+        JScrollPane scrollPane3 = new JScrollPane(et_p6);
+        scrollPane3.setBounds(23, 110, 463, 96);
+        panel4.add(scrollPane3);
+        
         pestañas.addTab("Listado", panel4);
+        
+        JLabel lblNewLabel_1_1_2_1_1 = new JLabel("Personas");
+        lblNewLabel_1_1_2_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblNewLabel_1_1_2_1_1.setBounds(496, 51, 107, 15);
+        panel4.add(lblNewLabel_1_1_2_1_1);
+        
+        JLabel lblNewLabel_1_1_2_1_2 = new JLabel("Roles");
+        lblNewLabel_1_1_2_1_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblNewLabel_1_1_2_1_2.setBounds(496, 144, 107, 15);
+        panel4.add(lblNewLabel_1_1_2_1_2);
+        
+        JLabel lblNewLabel_1_1_2_1_3 = new JLabel("Funcionalidades");
+        lblNewLabel_1_1_2_1_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblNewLabel_1_1_2_1_3.setBounds(496, 250, 107, 15);
+        panel4.add(lblNewLabel_1_1_2_1_3);
         
         //Realizamos lo mismo con el resto
         JPanel panel5=new JPanel();
@@ -302,6 +449,50 @@ public class GUIAdmin extends JFrame{
         getContentPane().add(pestañas);
         this.setLocationRelativeTo(null);
         //Botones
+        	//Personas
+        btnActualizarDatos.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		if(DAOPersona.updateRol(
+        				tfModApellido.getText(),
+        				tfModEmail.getText() ,
+        				tfModClave.getText(),
+        				tfModApellido2.getText(),
+        				Integer.parseInt(tfModRol.getText()),
+        				tfModNombre2.getText(),
+        				tfModNombre.getText(),
+        				tfModFechaNac.getText(),
+    					tfModDocumento.getText())) {
+        			JOptionPane.showMessageDialog(null, "Actualizado con exito");
+        		}else {
+        			JOptionPane.showMessageDialog(null, "Actualizado con desexito");
+        		}
+        	}
+        });
+        btnBuscarDocumento.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Persona p = DAOPersona.buscarPersonaByDoc(tfModDocumento.getText());
+        		tfModNombre.setText(p.getNombre1());
+        		tfModApellido.setText(p.getApellido1());
+        		tfModEmail.setText(p.getEmail());
+        		tfModClave.setText(p.getClave());
+        		tfModFechaNac.setText(p.getFech_nac());
+        		tfModRol.setText(String.valueOf(p.getId_rol()));
+        		tfModNombre2.setText(p.getNombre2());
+        		tfModApellido2.setText(p.getApellido2());
+        	}
+        });
+        
+        btnEliminarPersona.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		String idAEliminar = tfEliminarPersona.getText();
+        		if(DAOPersona.deletePersona(idAEliminar)) {
+        			JOptionPane.showMessageDialog(null, "Eliminado con exito");
+        		}else {
+        			JOptionPane.showMessageDialog(null, "Eliminado con desexito");
+        		}
+        	}
+        });
         	//Funcionalidades
         btnModificar_1.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -426,10 +617,19 @@ public class GUIAdmin extends JFrame{
 		LinkedList<Persona> personas = DAOPersona.selectAll();
 		Tabla tb = new Tabla(personas);
 		tb.getTabla().setFillsViewportHeight(false);
+		
+		return tb.getTabla();
+	}
+	public JTable tabListarFuncionalidades() {
+		LinkedList<Funcionalidad> personas = DAOFuncionalidad.selectAll();
+		TablaFuncs tb = new TablaFuncs(personas);
 		tb.getTabla().setFillsViewportHeight(false);
-		tb.getTabla().setFillsViewportHeight(false);
-		tb.getTabla().setFillsViewportHeight(false);
-		tb.getTabla().setFillsViewportHeight(false);
+		
+		return tb.getTabla();
+	}
+	public JTable tabListarRoles() {
+		LinkedList<Rol> roles = DAORol.selectAll();
+		TablaRoles tb = new TablaRoles(roles);
 		tb.getTabla().setFillsViewportHeight(false);
 		
 		return tb.getTabla();

@@ -87,19 +87,20 @@ public class DAORol {
 			return false;
 		}
 	}
-	public static LinkedList<Funcionalidad> selectAll(){
-		LinkedList<Funcionalidad> funcionalidades = new LinkedList<>();
+	public static LinkedList<Rol> selectAll(){
+		LinkedList<Rol> funcionalidades = new LinkedList<>();
 		try {
 			PreparedStatement statement = DataBaseManager.getConnection().prepareStatement(LISTAR);
 			
 			ResultSet resultado = statement.executeQuery();
 			
 			while(resultado.next()) {
-				Funcionalidad funcionalidad = new Funcionalidad(
+				Rol funcionalidad = new Rol(
 
-							resultado.getInt("ID_FUNC"),
+							resultado.getInt("ID_ROL"),
 							resultado.getString("NOMBRE"),
-							resultado.getString("DESCRIPCION")
+							resultado.getString("DESCRIPCION"),
+							null
 						);
 				funcionalidades.add(funcionalidad);
 			}
