@@ -39,7 +39,7 @@ public class GUILogin extends JFrame {
 			}
 		});
 	}
-	//AVERRRRR AHORA PUTITA
+	//AVERRRRR AHORA PUTITA 
 	/**
 	 * Create the frame.
 	 */
